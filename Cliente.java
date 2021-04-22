@@ -1,4 +1,4 @@
-public class Cliente {
+public abstract class Cliente {
     private String nome;
 
 public void setCliente(String nome){
