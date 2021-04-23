@@ -54,7 +54,7 @@ public class Main {
 				JOptionPane.INFORMATION_MESSAGE, null, items, items[0]);
 			if(type == "A vista"){
 			pagamento = true;
-			}else if (tipo == "Parcelado") {
+			}else if (type == "Parcelado") {
 			pagamento = false;
 
 			} else {
@@ -76,10 +76,10 @@ public class Main {
 	}
 	
 	public static void Pesquisar(Reserva reservas[]) {
-
 		Object[] itens = { "Física", "Jurídica" };
 		Object tipo = JOptionPane.showInputDialog(null, "Pessoa física ou jurídica", null,
 			JOptionPane.INFORMATION_MESSAGE, null, itens, itens[0]);
+		//PessoaFísica
 			if (tipo == "Física"){
 		String aux = JOptionPane.showInputDialog("Informe seu CPF");
 				for (int i = 0; i < 6; i++) {
@@ -91,6 +91,7 @@ public class Main {
 							JOptionPane.WARNING_MESSAGE);
 					}
 				}
+		//PessoaJurídica
 			}else if(tipo == "Jurídica"){
 				String aux = JOptionPane.showInputDialog("Informe seu CNPJ");
 				for (int i = 0; i < 6; i++) {
