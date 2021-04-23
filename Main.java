@@ -16,7 +16,7 @@ public class Main {
             Reservar(reservas, indice);
 				break;
 			default:
-			JOptionPane.showMessageDialog(null, "Escolha uma opção válida!", "Erro",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Escolha uma opção válida!", "Erro!",JOptionPane.WARNING_MESSAGE);
 				resp = "1";
 			}
 		} while (resp.equals("1") || resp.contentEquals(null));
