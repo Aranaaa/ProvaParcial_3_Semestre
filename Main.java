@@ -13,7 +13,7 @@ public class Main {
 					"Restaurante SABOR SOFISTICADO\n1. Reservar Mesa\n2. Pesquisar reserva\n3. Imprimir reservas\n4. Imprimir lista de espera\n5. Cancelar reserva\n6.Finalizar");
 			switch (resp) {
             case "1":
-            indice += Reservar(reservas, indice);
+            Reservar(reservas, indice);
 				if (indice < 5) {
 					
 				} else if (indice > 4 && indice < 15 ){
@@ -50,32 +50,35 @@ public class Main {
 				|| resp.contentEquals(null));
 
     }
-    public static int Reservar(String nome, Reserva reservas[], int indice) {
+    public static void Reservar(Reserva reservas[], int indice) {
+		 String nome = JOptionPane.showInputDialog("Diga seu nome!");
 		Object[] itens = { "Física", "Jurídica" };
 		Object tipo = JOptionPane.showInputDialog(null, "Pessoa física ou jurídica", null,
 			JOptionPane.INFORMATION_MESSAGE, null, itens, itens[0]);
 			if (tipo == "Física") {
-			PessoaFisica novo = new PessoaFisica();	
-			novo.setNome(nome);
-			String cpf = JOptionPane.showInputDialog("Informe o CPF");
-			novo.setPessoaFisica(cpf);
-			}else if (tipo == "Jurídica") {
-				PessoaJuridica novo = new PessoaJuridica();
+				String cpf = JOptionPane.showInputDialog("Informe o CPF");
+				PessoaFisica novo = new PessoaFisica(nome, cpf);	
 				novo.setNome(nome);
-				novo.setEmpregado(matricula);
-				dados.add(novo);
-	
+			}else if (tipo == "Jurídica") {
+				String cnpj = JOptionPane.showInputDialog("Informe o CNPJ");
+				PessoaJuridica novo = new PessoaJuridica(nome, cnpj);
 
-				novo.setVendedor(totalDasVendas, comissao);
-	
 			} else {
 				JOptionPane.showMessageDialog(null, "Você precisa escolher uma opção!");
 				return;
 			}
-		reservas[indice].nome = JOptionPane.showInputDialog("Diga seu nome!");
-		reservas[indice].CPF = JOptionPane.showInputDialog("Diga seu CPF!");
-		reservas[indice].telefone = JOptionPane.showInputDialog("Diga seu telefone!");
-		auxpaga = JOptionPane.showInputDialog("\nDigite 1 para pagamento à vista\nDigite dois para pagemento parcelado");
+			Object[] items = { "A vista", "Parcelado" };
+			Object type = JOptionPane.showInputDialog(null, "Qual sua forma de pagamento?", null,
+				JOptionPane.INFORMATION_MESSAGE, null, items, items[0]);
+			if(type == "A vista"){
+			reservas[indice].setpagamentoAvista(true);
+			}else if (tipo == "Parcelado") {
+			reservas[indice].setpagamentoAvista(false);	
+
+			} else {
+				JOptionPane.showMessageDialog(null, "Você precisa escolher uma opção!");
+				return;
+			}
 		reservas[indice].pagamento = Integer.parseInt(auxpaga);
 		JOptionPane.showMessageDialog(null, "Reservado!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
 	}
