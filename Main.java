@@ -57,8 +57,20 @@ public class Main {
 			if (tipo == "Física") {
 			PessoaFisica novo = new PessoaFisica();	
 			novo.setNome(nome);
-			novo.
 			String cpf = JOptionPane.showInputDialog("Informe o CPF");
+			novo.setPessoaFisica(cpf);
+			}else if (tipo == "Jurídica") {
+				PessoaJuridica novo = new PessoaJuridica();
+				novo.setNome(nome);
+				novo.setEmpregado(matricula);
+				dados.add(novo);
+	
+
+				novo.setVendedor(totalDasVendas, comissao);
+	
+			} else {
+				JOptionPane.showMessageDialog(null, "Você precisa escolher uma opção!");
+				return;
 			}
 		reservas[indice].nome = JOptionPane.showInputDialog("Diga seu nome!");
 		reservas[indice].CPF = JOptionPane.showInputDialog("Diga seu CPF!");
