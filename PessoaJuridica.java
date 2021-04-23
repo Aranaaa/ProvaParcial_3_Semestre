@@ -8,6 +8,6 @@ public PessoaJuridica(String nome, String cnpj){
 }
 @Override
 	public String toString() {
-		return "CNPJ: "+this.cnpj;
+		return "Nome: "+this.getNome()+"CNPJ: "+this.cnpj;
 	}
 }
