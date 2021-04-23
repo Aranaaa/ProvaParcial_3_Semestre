@@ -51,7 +51,9 @@ public class Main {
 
     }
     public static void Reservar(Reserva reservas[], int indice) {
-		 String nome = JOptionPane.showInputDialog("Diga seu nome!");
+		//nome
+		String nome = JOptionPane.showInputDialog("Informe seu nome");
+		//pessoafisicajuridica
 		Object[] itens = { "Física", "Jurídica" };
 		Object tipo = JOptionPane.showInputDialog(null, "Pessoa física ou jurídica", null,
 			JOptionPane.INFORMATION_MESSAGE, null, itens, itens[0]);
@@ -62,11 +64,12 @@ public class Main {
 			}else if (tipo == "Jurídica") {
 				String cnpj = JOptionPane.showInputDialog("Informe o CNPJ");
 				PessoaJuridica novo = new PessoaJuridica(nome, cnpj);
-
+				novo.setNome(nome);
 			} else {
 				JOptionPane.showMessageDialog(null, "Você precisa escolher uma opção!");
 				return;
 			}
+		//formadepagamento
 			Object[] items = { "A vista", "Parcelado" };
 			Object type = JOptionPane.showInputDialog(null, "Qual sua forma de pagamento?", null,
 				JOptionPane.INFORMATION_MESSAGE, null, items, items[0]);
@@ -79,7 +82,7 @@ public class Main {
 				JOptionPane.showMessageDialog(null, "Você precisa escolher uma opção!");
 				return;
 			}
-		reservas[indice].pagamento = Integer.parseInt(auxpaga);
+		
 		JOptionPane.showMessageDialog(null, "Reservado!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
 	}
     }
