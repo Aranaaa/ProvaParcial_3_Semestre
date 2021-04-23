@@ -3,8 +3,7 @@ import javax.swing.JOptionPane;
 public class Main {
 
 	public static void main(String[] args) {
-        Reserva[] reservas = new Reserva [5];
-        Reserva[] extra = new Reserva [10];
+        Reserva[] reservas = new Reserva [30];
 		int indice = 0;
 		String nome;
 		String resp;
@@ -12,9 +11,14 @@ public class Main {
 			resp = JOptionPane.showInputDialog(
 					"Restaurante SABOR SOFISTICADO\n1. Reservar Mesa\n2. Pesquisar reserva\n3. Imprimir reservas\n4. Imprimir lista de espera\n5. Cancelar reserva\n6.Finalizar");
 			switch (resp) {
+			//Reservar Mesa
             case "1":
             Reservar(reservas, indice);
 				break;
+			//Pesquisar Reserva
+			case "2":
+			Pesquisar(reservas);
+                break;
 			default:
 			JOptionPane.showMessageDialog(null, "Escolha uma opção válida!", "Erro!",JOptionPane.WARNING_MESSAGE);
 				resp = "1";
@@ -70,4 +74,40 @@ public class Main {
 		JOptionPane.showMessageDialog(null, "Reservado!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
 	}
 	}
+	
+	public static void Pesquisar(Reserva reservas[]) {
+
+		Object[] itens = { "Física", "Jurídica" };
+		Object tipo = JOptionPane.showInputDialog(null, "Pessoa física ou jurídica", null,
+			JOptionPane.INFORMATION_MESSAGE, null, itens, itens[0]);
+			if (tipo == "Física"){
+		String aux = JOptionPane.showInputDialog("Informe seu CPF");
+				for (int i = 0; i < 6; i++) {
+					PessoaFisica pf = (PessoaFisica)reservas[i].getCliente();
+					if(pf.getCpf().equals(aux) ){
+						JOptionPane.showMessageDialog(null, "Você possui uma mesa reservada!", "Maravilha!", JOptionPane.INFORMATION_MESSAGE);
+					}else{
+						JOptionPane.showMessageDialog(null, "Não tem reserva com tais informações... ", "Oh não...",
+							JOptionPane.WARNING_MESSAGE);
+					}
+				}
+			}else if(tipo == "Jurídica"){
+				String aux = JOptionPane.showInputDialog("Informe seu CNPJ");
+				for (int i = 0; i < 6; i++) {
+					PessoaJuridica pj = (PessoaJuridica)reservas[i].getCliente();
+					if(pj.getCnpj().equals(aux) ){
+						JOptionPane.showMessageDialog(null, "Você possui uma mesa reservada!", "Maravilha!", JOptionPane.INFORMATION_MESSAGE);
+					}else{
+						JOptionPane.showMessageDialog(null, "Não tem reserva com tais informações... ", "Oh não...",
+							JOptionPane.WARNING_MESSAGE);
+					}
+				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Escolha uma ação", "!",
+							JOptionPane.WARNING_MESSAGE);
+				return;
+
+       
     }
+ }
+}	
