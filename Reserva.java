@@ -7,7 +7,10 @@ public class Reserva {
        this.cliente = cliente;
        this.pagamentoAvista = pagamentoAvista;
     }
-   
+   public Cliente getCliente(){
+        return cliente;
+   }
+
     @Override
 	public String toString() {
 		return "Nome: "+this.cliente.getNome()+"Tipo de cliente: "+this.cliente+"Forma de pagamento: "+this.pagamentoAvista;
