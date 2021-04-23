@@ -5,8 +5,9 @@ public class Main {
 	public static void main(String[] args) {
         Reserva[] reservas = new Reserva [5];
         Reserva[] extra = new Reserva [10];
-        int indice = 0;
-        String resp;
+		int indice = 0;
+		String nome;
+		String resp;
 		do {
 			resp = JOptionPane.showInputDialog(
 					"Restaurante SABOR SOFISTICADO\n1. Reservar Mesa\n2. Pesquisar reserva\n3. Imprimir reservas\n4. Imprimir lista de espera\n5. Cancelar reserva\n6.Finalizar");
@@ -49,9 +50,16 @@ public class Main {
 				|| resp.contentEquals(null));
 
     }
-    public static int Reservar(Reserva reservas[], int indice) {
-		String auxpaga = "";
-		reservas[indice] = new Reserva();
+    public static int Reservar(String nome, Reserva reservas[], int indice) {
+		Object[] itens = { "Física", "Jurídica" };
+		Object tipo = JOptionPane.showInputDialog(null, "Pessoa física ou jurídica", null,
+			JOptionPane.INFORMATION_MESSAGE, null, itens, itens[0]);
+			if (tipo == "Física") {
+			PessoaFisica novo = new PessoaFisica();	
+			novo.setNome(nome);
+			novo.
+			String cpf = JOptionPane.showInputDialog("Informe o CPF");
+			}
 		reservas[indice].nome = JOptionPane.showInputDialog("Diga seu nome!");
 		reservas[indice].CPF = JOptionPane.showInputDialog("Diga seu CPF!");
 		reservas[indice].telefone = JOptionPane.showInputDialog("Diga seu telefone!");
