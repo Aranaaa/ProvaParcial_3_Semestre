@@ -18,13 +18,14 @@ public class Main {
 			//Pesquisar Reserva
 			case "2":
 			Pesquisar(reservas);
-                break;
+				break;
+				
 			default:
 			JOptionPane.showMessageDialog(null, "Escolha uma opção válida!", "Erro!",JOptionPane.WARNING_MESSAGE);
 				resp = "1";
 			}
-		} while (resp.equals("1") || resp.contentEquals(null));
-
+		} while (resp.equals("1") || resp.equals("2") || resp.contentEquals(null));
+ 
     }
     public static void Reservar(Reserva reservas[], int indice) {
 		Cliente novo;
@@ -54,7 +55,7 @@ public class Main {
 				JOptionPane.INFORMATION_MESSAGE, null, items, items[0]);
 			if(type == "A vista"){
 			pagamento = true;
-			}else if (type == "Parcelado") {
+			}else if  (type == "Parcelado") {
 			pagamento = false;
 
 			} else {
@@ -99,8 +100,7 @@ public class Main {
 					if(pj.getCnpj().equals(aux) ){
 						JOptionPane.showMessageDialog(null, "Você possui uma mesa reservada!", "Maravilha!", JOptionPane.INFORMATION_MESSAGE);
 					}else{
-						JOptionPane.showMessageDialog(null, "Não tem reserva com tais informações... ", "Oh não...",
-							JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Não tem reserva com tais informações... ", "Oh não...", JOptionPane.WARNING_MESSAGE);
 					}
 				}
 			}else {
