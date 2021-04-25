@@ -11,6 +11,6 @@ public String getCpf(){
    }
 @Override
 	public String toString() {
-		return "Nome: "+this.getNome()+"CPF: "+this.cpf;
+		return "Nome: "+getNome()+" CPF: "+cpf+" Tipo do Cliente: "+getClass();
 	}
 }
