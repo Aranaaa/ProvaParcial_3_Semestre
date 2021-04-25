@@ -5,7 +5,6 @@ public class Main {
 	public static void main(String[] args) {
         Reserva[] reservas = new Reserva [30];
 		int indice = 0;
-		String nome;
 		String resp;
 		do {
 			resp = JOptionPane.showInputDialog(
@@ -31,14 +30,16 @@ public class Main {
 			JOptionPane.showMessageDialog(null,ImprimirExtras(reservas));
 					break;
 			case "5":
-			return;
+			Cancelar(reservas);
+			indice --;
+			break;
 			case "6":
 			return;
 			default:
 			JOptionPane.showMessageDialog(null, "Escolha uma opção válida!", "Erro!",JOptionPane.WARNING_MESSAGE);
 				resp = "1";
 			}
-		} while (resp.equals("1") || resp.equals("2") ||resp.equals("3") || resp.equals("4")|| resp.equals("5") || 
+		} while (resp.equals("1") || resp.equals("2") || resp.equals("3") || resp.equals("4")|| resp.equals("5") || 
 		resp.equals("6") || resp.contentEquals(null));
  
     }
@@ -72,7 +73,7 @@ public class Main {
 				JOptionPane.INFORMATION_MESSAGE, null, items, items[0]);
 			if(type == "A vista"){
 			pagamento = true;
-			}else if  (type == "Pagamento") {
+			}else if  (type == "Parcelado") {
 			pagamento = false;
 			} else if (type == null) {
 				return R;
@@ -93,7 +94,7 @@ public class Main {
 	return R;
 	}
 	
-	public static void Pesquisar(Reserva reservas[]) { //show
+	public static void Pesquisar(Reserva reservas[]) { 
 		Object[] itens = { "Física", "Jurídica" };
 		Object tipo = JOptionPane.showInputDialog(null, "Pessoa física ou jurídica", null,
 			JOptionPane.INFORMATION_MESSAGE, null, itens, itens[0]);
@@ -129,7 +130,7 @@ public class Main {
 		JOptionPane.showMessageDialog(null, "Não tem reserva com tais informações... ", "Oh não...", JOptionPane.WARNING_MESSAGE);
  }
 
-	public static String ImprimirReservas(Reserva reservas[]){ //pedir ajuda com conteudo dentro do array
+	public static String ImprimirReservas(Reserva reservas[]){ 
 		String imprimir = "";
 		for (int i = 0; i < 6; i++) {
 			if (reservas[i] == null) {
@@ -140,7 +141,7 @@ public class Main {
 		return imprimir;
 	 }
 
-	public static String ImprimirExtras(Reserva reservas[]){ //pedir ajuda com conteudo dentro do array
+	public static String ImprimirExtras(Reserva reservas[]){ 
 		String imprimir = "";
 		for (int i = 6; i < reservas.length; i++) {
 			if (reservas[i] == null) {
@@ -151,6 +152,52 @@ public class Main {
 		return imprimir;
 	 }
 
+	public static void Cancelar(Reserva reservas[]) { 
+		
+		Object[] itens = { "Física", "Jurídica" };
+		Object tipo = JOptionPane.showInputDialog(null, "Pessoa física ou jurídica", null,
+			JOptionPane.INFORMATION_MESSAGE, null, itens, itens[0]);
+		//PessoaFísica
+			if (tipo == "Física"){
+		String aux = JOptionPane.showInputDialog("Informe seu CPF");
+				for (int i = 0; i < 6; i++) {
+					if(reservas[i] != null){
+					if (reservas[i].getCliente() instanceof PessoaFisica) {
+					PessoaFisica pf = (PessoaFisica)reservas[i].getCliente();
+					if(pf.getCpf().equals(aux) ){
+						JOptionPane.showMessageDialog(null, "Você foi cancelado!", "Maravilha!", JOptionPane.INFORMATION_MESSAGE);
+						int j = i;
+						while(reservas[j] != null){
+						reservas [j] = reservas[j+1];
+						j++;
+					}
+						return;
+				}	
+			}
+		 }	
+		}
+		//PessoaJurídica
+			}else if(tipo == "Jurídica"){
+				String aux = JOptionPane.showInputDialog("Informe seu CNPJ");
+				for (int i = 0; i < 6; i++) {
+					if(reservas[i] != null){
+					if (reservas[i].getCliente() instanceof PessoaJuridica) {
+					PessoaJuridica pj = (PessoaJuridica)reservas[i].getCliente();
+					if(pj.getCnpj().equals(aux) ){
+						JOptionPane.showMessageDialog(null, "Você foi cancelado!", "Maravilha!", JOptionPane.INFORMATION_MESSAGE);
+						int j = i;
+						while(reservas[j] != null){
+						reservas [j] = reservas[j+1];
+						j++;
+					}
+						return;
+					}	
+					}
+				}
+			}
+    	}
+		JOptionPane.showMessageDialog(null, "Não tem reserva com tais informações... ", "Oh não...", JOptionPane.WARNING_MESSAGE);
+ }
 	}
 
 	

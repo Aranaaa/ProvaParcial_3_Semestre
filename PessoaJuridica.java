@@ -12,6 +12,6 @@ public String getCnpj(){
    }
 @Override
 	public String toString() {
-		return "Nome: "+this.getNome()+"CNPJ: "+this.cnpj;
+        return "Nome: "+getNome()+" Tipo do Cliente: "+getClass();
 	}
 }

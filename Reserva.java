@@ -1,4 +1,4 @@
-public class Reserva {
+public class Reserva implements Pagamento {
     private Cliente cliente;
     private boolean pagamentoAvista;
 
@@ -7,18 +7,23 @@ public class Reserva {
        this.cliente = cliente;
        this.pagamentoAvista = pagamentoAvista;
     }
-   public Cliente getCliente(){
+    public Cliente getCliente(){
         return cliente;
    }
-
-    @Override
-	public String toString() {
-		return "Nome: "+this.cliente.getNome()+"Tipo de cliente: "+cliente+"Forma de pagamento: "+this.pagamentoAvista;
-    }
     public void setNome(Cliente novo) {
     }
     public void setpagamentoAvista(boolean pagamento) {
     }
+    
+    @Override
+	public String toString() {
+        if (!pagamentoAvista) {
+            return cliente+" Forma de pagamento: Parcelado";
+        }else{
+        return cliente+" Forma de pagamento: A vista";
+    }
+}
+    
 
 }
 
