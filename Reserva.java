@@ -13,7 +13,11 @@ public class Reserva {
 
     @Override
 	public String toString() {
-		return "Nome: "+this.cliente.getNome()+"Tipo de cliente: "+this.cliente+"Forma de pagamento: "+this.pagamentoAvista;
+		return "Nome: "+this.cliente.getNome()+"Tipo de cliente: "+cliente+"Forma de pagamento: "+this.pagamentoAvista;
+    }
+    public void setNome(Cliente novo) {
+    }
+    public void setpagamentoAvista(boolean pagamento) {
     }
 
 }
